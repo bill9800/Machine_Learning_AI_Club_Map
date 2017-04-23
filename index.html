@@ -42,46 +42,51 @@ var treeData = [
   {
     "name": "Machine Learning",
     "parent": "null",
+    "link": "https://bill9800.github.io/Machine_Learning_Map/",
     "children": [
         {
-        "name": "Regression",
-        "parent": "Machine Learning",
-        "children": [
-          {
-            "name": "Linear Regression",
-            "parent": "Regression"
-          },
-          {
-            "name": "Polynomial Regression",
-            "parent": "Regression"
-          }]
-        },
-        {
-        "name": "Classification",
-        "parent": "Machine Learning",
-        "children": [
-          {
-            "name": "Logistic Regression",
-            "parent": "Classification"
-          },
-          {
-            "name": "Probabilistic Generative Model",
-            "parent": "Classification",
+        "name": "Supervised Learning",
+        "parent" : "Machine Learning",
+        "children" :[{
+            "name": "Regression",
+            "parent": "Machine Learning",
             "children": [
                   {
-                    "name": "Gaussian Distribution",
-                    "parent": "Probabilistic Generative Model"
-                  }]
-          },
-          {
-            "name": "Multi-class Classification",
-            "parent": "Classification",
-            "children": [
+                    "name": "Linear Regression",
+                    "parent": "Regression"
+                  },
                   {
-                    "name": "Softmax function",
-                    "parent": "Multi-class Classification"
+                    "name": "Polynomial Regression",
+                    "parent": "Regression"
                   }]
-          },
+            },
+            {
+            "name": "Classification",
+            "parent": "Machine Learning",
+            "children": [
+              {
+                "name": "Logistic Regression",
+                "parent": "Classification"
+              },
+              {
+                "name": "Probabilistic Generative Model",
+                "parent": "Classification",
+                "children": [
+                      {
+                        "name": "Gaussian Distribution",
+                        "parent": "Probabilistic Generative Model"
+                      }]
+              },
+              {
+                "name": "Multi-class Classification",
+                "parent": "Classification",
+                "children": [
+                      {
+                        "name": "Softmax function",
+                        "parent": "Multi-class Classification"
+                      }]
+              }
+            ]},        
           {
             "name": "Deep Learning",
             "parent": "Classification",
@@ -363,19 +368,20 @@ function update(source) {
   // Enter any new nodes at the parent's previous position.
   var nodeEnter = node.enter().append("g")
 	  .attr("class", "node")
-	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-	  .on("click", click);
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
 
   nodeEnter.append("circle")
 	  .attr("r", 1e-6)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; })
+      .on("click", click);
 
   nodeEnter.append("text")
 	  .attr("x",13)
 	  .attr("dy", ".35em")
 	  .attr("text-anchor","start")
 	  .text(function(d) { return d.name; })
-	  .style("fill-opacity", 1e-6);
+	  .style("fill-opacity", 1e-6)
+      .on("click",text_link);
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -445,7 +451,13 @@ function click(d) {
   }
   update(d);
 }
-
+    
+// hyper link for tree text.
+function text_link(d){
+    window.open(d.link);
+}
+    
+    
 </script>
 	
   </body>
