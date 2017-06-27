@@ -9,10 +9,10 @@ Visualization of the summary about Machine Learning and Deep Learning by D3js.
 1. Define a set of function
 2. improve the goodness of the function
 - Gradient descent
-- > Vanilla gradient descent
-- > Adagrad
-- > Stochastic gradient descent
-- > Momentum
+>> Vanilla gradient descent
+>> Adagrad
+>> Stochastic gradient descent
+>> Momentum
 3. Pick the best function
 
 ## Error
